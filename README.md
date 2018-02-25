@@ -4,6 +4,8 @@
 
 usermod-p.awk emits an augmented copy of a UNIX shadow file, with the configured username's entry modified to feature the desired (hashed) password. This shim is useful for automatically updating passwords in environments where a system's `usermod` command omits the typical `-p` flag to perform this operation.
 
+For manual password changes, `passwd` can safely edit the `/etc/shadow` file. However, this typically requires the password to be entered via an interactive tty session, requiring either a human operator or surgical application of the `expect` utility. This shim provides a more automated workflow, intended for system administrators, Continuous Integration servers, virtual machine configuration, and so on.
+
 # EXAMPLE
 
 ```console
