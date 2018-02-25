@@ -1,8 +1,8 @@
-# usermod-p-shim: a replacement part for missing -p functionality in usermod
+# usurp: a replacement part for missing -p functionality in usermod
 
 # ABOUT
 
-usermod-p.awk emits an augmented copy of a UNIX shadow file, with the configured username's entry modified to feature the desired (hashed) password. This shim is useful for automatically updating passwords in environments where a system's `usermod` command omits the typical `-p` flag to perform this operation.
+usurp emits an augmented copy of a UNIX shadow file, with the configured username's entry modified to feature the desired (hashed) password. This shim is useful for automatically updating passwords in environments where a system's `usermod` command omits the typical `-p` flag to perform this operation.
 
 For manual password changes, `passwd` can safely edit the `/etc/shadow` file. However, this typically requires the password to be entered via an interactive tty session, requiring either a human operator or surgical application of the `expect` utility. This shim provides a more automated workflow, intended for system administrators, Continuous Integration servers, virtual machine configuration, and so on.
 
@@ -11,7 +11,7 @@ For manual password changes, `passwd` can safely edit the `/etc/shadow` file. Ho
 ```console
 $ sudo cp /etc/shadow /etc/shadow.bak
 
-$ USERNAME=root PASSWORD='$1$zNXmpWZT$OjY/uoVZo1bsnld1/k5za1' sudo awk -f usermod-p.awk < /etc/shadow > /etc/shadow.new
+$ USERNAME=root PASSWORD='$1$zNXmpWZT$OjY/uoVZo1bsnld1/k5za1' sudo awk -f usurp.awk < /etc/shadow > /etc/shadow.new
 
 $ diff /etc/shadow /etc/shadow.new
 1c1
