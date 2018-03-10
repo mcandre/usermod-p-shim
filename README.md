@@ -11,7 +11,7 @@ For manual password changes, `passwd` can safely edit the `/etc/shadow` file. Ho
 ```console
 $ sudo cp /etc/shadow /etc/shadow.bak
 
-$ USERNAME=root PASSWORD='$1$zNXmpWZT$OjY/uoVZo1bsnld1/k5za1' sudo usurp < /etc/shadow > /etc/shadow.new
+$ USERNAME=root PASSWORD='$1$zNXmpWZT$OjY/uoVZo1bsnld1/k5za1' sudo awk -f lib/usurp.awk < /etc/shadow > /etc/shadow.new
 
 $ diff /etc/shadow /etc/shadow.new
 1c1
@@ -34,4 +34,3 @@ $ sudo cp /etc/shadow.new /etc/shadow
 # INSTALL
 
 1. Clone https://github.com/mcandre/usurp.git
-2. Add the .../lib directory to your shell's `$PATH`.
