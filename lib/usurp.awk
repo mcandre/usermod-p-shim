@@ -1,6 +1,6 @@
 match($0, /^.+\:.*\:.*\:.*\:.*\:.*\:.*\:.*\:.*$/) {
-  split($0, arr, ":");
+    split($0, arr, ":");
 
-  if (arr[1] == ENVIRON["USERNAME"]) printf("%s:%s:%s:%s:%s:%s:%s:%s:%s\n", arr[1], ENVIRON["PASSWORD"], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9])
-  else print
+    if (arr[1] == ENVIRON["USERNAME"]) printf("%s:%s:%s:%s:%s:%s:%s:%s:%s\n", arr[1], ENVIRON["PASSWORD"], arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9])
+    else print
 }
